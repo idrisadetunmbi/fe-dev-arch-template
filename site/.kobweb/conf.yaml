@@ -1,0 +1,14 @@
+site:
+  title: "Kobweb Koin Ktor Template"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/kobwebkoinktortemplate.js"
+      api: "build/libs/kobwebkoinktortemplate.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/kobwebkoinktortemplate.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
