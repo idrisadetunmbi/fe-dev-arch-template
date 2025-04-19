@@ -1,53 +1,30 @@
-This is a [Kobweb](https://github.com/varabyte/kobweb) project bootstrapped with the `app/empty` template.
+# FE Dev Arch Template (with Kobweb, Koin, Ktor)
 
-This template is useful if you already know what you're doing and just want a clean slate. By default, it
-just creates a blank home page (which prints to the console so you can confirm it's working)
+## Introduction
 
-If you are still learning, consider instantiating the `app` template (or one of the examples) to see actual,
-working projects.
+This is a template extended from the `app/empty` template of the [Kobweb Framework](https://github.com/varabyte/kobweb).
+It includes some additional libraries and architecture that I believe are essential for full frontend development.
+
+The architecture basically includes having repositories, models, and a controller (some other architectures call this a view model, presenter, etc. — they are all the same to me). Additionally, it demonstrates using DI (using Koin).
+
+It is a simpler version of clean architecture, which advises using UseCases (not a fan of creating one unless it contains code repeated in multiple view models/controllers).
+
+On top of this, it includes an `Async` interface, an extended version of the `kotlin.Result` (monad) interface. This interface has been determined as essential based on my practical experience with FE development. A `Result` interface (`Optional` in Java, etc.) represents only two states (value is present or not), but the `Async` interface extends the non-availability part of the monad to include that the computation has not started yet (`Async.Uninitialized`) or the computation is in progress (`Async.Loading`). While the `Async.Uninitialized` is not always needed or can be represented with `null` (or it is when dealing with `null` is unpleasant), the `Async.Loading` is essential for communicating to the user that the computation is in progress — a state that is encountered almost every time in FE development.
+
+The `Async` interface is lifted from the [MvRx](https://github.com/airbnb/mavericks/blob/main/mvrx-common/src/main/java/com/airbnb/mvrx/Async.kt) codebase but has implementations from other resources (e.g., the [`Resource` class](https://gist.github.com/idrisadetunmbi/758a3e26427f4b69fc5c0baed9415a93) from the old guide to app architecture) and can easily be written based on preference.
+
+Another essential is the `BasePageModel`, an abstract class that a controller extend for UI state management incorporating immutability.
+
+The template does not include "do it if you think you need it" things like modularization/separate DTOs for different layers.
 
 ## Getting Started
 
-First, run the development server by typing the following command in a terminal under the `site` folder:
+Clone/fork and adapt to your project.
 
-```bash
-$ cd site
-$ kobweb run
-```
+## Contributing
 
-Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+Contributions are welcome! Create a pull requested if interested.
 
-You can use any editor you want for the project, but we recommend using **IntelliJ IDEA Community Edition** downloaded
-using the [Toolbox App](https://www.jetbrains.com/toolbox-app/).
+## License
 
-Press `Q` in the terminal to gracefully stop the server.
-
-### Live Reload
-
-Feel free to edit / add / delete new components, pages, and API endpoints! When you make any changes, the site will
-indicate the status of the build and automatically reload when ready.
-
-## Exporting the Project
-
-When you are ready to ship, you should shutdown the development server and then export the project using:
-
-```bash
-kobweb export
-```
-
-When finished, you can run a Kobweb server in production mode:
-
-```bash
-kobweb run --env prod
-```
-
-If you want to run this command in the Cloud provider of your choice, consider disabling interactive mode since nobody
-is sitting around watching the console in that case anyway. To do that, use:
-
-```bash
-kobweb run --env prod --notty
-```
-
-Kobweb also supports exporting to a static layout which is compatible with static hosting providers, such as GitHub
-Pages, Netlify, Firebase, any presumably all the others. You can read more about that approach here:
-https://bitspittle.dev/blog/2022/staticdeploy
+This project is in the public domain. See the [LICENSE](LICENSE) file for details.

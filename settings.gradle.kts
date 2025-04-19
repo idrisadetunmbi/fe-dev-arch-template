@@ -25,7 +25,7 @@ gradle.settingsEvaluated {
     dependencyResolutionManagement.repositories { kobwebSnapshots() }
 }
 
-rootProject.name = "kobwebkoinktortemplate"
+rootProject.name = "fedevarchtemplate"
 
 include(":site")
 

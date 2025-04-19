@@ -1,14 +1,14 @@
 site:
-  title: "Kobweb Koin Ktor Template"
+  title: "FE Dev Arch Template"
 
 server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/kotlin-webpack/js/developmentExecutable/kobwebkoinktortemplate.js"
-      api: "build/libs/kobwebkoinktortemplate.jar"
+      script: "build/kotlin-webpack/js/developmentExecutable/fedevarchtemplate.js"
+      api: "build/libs/fedevarchtemplate.jar"
     prod:
-      script: "build/kotlin-webpack/js/productionExecutable/kobwebkoinktortemplate.js"
+      script: "build/kotlin-webpack/js/productionExecutable/fedevarchtemplate.js"
       siteRoot: ".kobweb/site"
 
-  port: 8080
+  port: 8082
