@@ -3,11 +3,11 @@
 ## Introduction
 
 This is a template extended from the [`app/empty`](https://github.com/varabyte/kobweb-templates/tree/d151f08a366cef4f44f344ff8e3368c00e2c2955/app/empty) template of the [Kobweb Framework](https://github.com/varabyte/kobweb).
-It includes some additional libraries and architecture that I believe are essential for full frontend development.
+It includes some additional libraries and architecture that is believed to be essential for full frontend development.
 
-The architecture basically includes having repositories, models, and a controller (some other architectures call this a view model, presenter, etc.). Additionally, it demonstrates using DI (using Koin).
+The architecture basically includes having repositories, models, and a controller (some other architectures call this a viewmodel, presenter, etc.). Additionally, it demonstrates using DI (using Koin).
 
-It is a simpler version of [clean architecture](https://medium.com/better-programming/the-clean-architecture-beginners-guide-e4b7058c1165), which advises using UseCases (not a fan of creating one unless it contains code repeated in multiple view models/controllers).
+It is a simpler version of [clean architecture](https://medium.com/better-programming/the-clean-architecture-beginners-guide-e4b7058c1165), which advises using UseCases (it is preferred to create one only when it contains code repeated in multiple viewmodels/controllers).
 
 On top of this, it includes an `Async` interface, an extended version of the `kotlin.Result` (implementation of monad in Kotlin) interface. This interface has been determined as essential based on practical experience with FE development. 
 
@@ -17,7 +17,7 @@ The `Async` interface is lifted from the [MvRx](https://github.com/airbnb/maveri
 
 Another essential is the `BasePageModel`, an abstract class that a controller can extend for UI state management incorporating immutability (required for a deterministic behaviour of the UI).
 
-The template does not include "do it if you think you need it" things like modularization and separate models for different layers.
+The template does not include "do it if your project needs it" things like modularization and separate models for different layers.
 
 ## Getting Started
 
